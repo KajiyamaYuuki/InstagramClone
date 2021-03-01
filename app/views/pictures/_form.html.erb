@@ -1,6 +1,6 @@
 <%= form_with(model: @picture, local: true, url: choose_new_or_edit ) do |form| %>
   <% if @picture.errors.any? %>
-    <div id="erroe_explanation">
+    <div id="error_explanation">
       <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
       <ul>
       <% @picture.errors.full_messages.each do |messeage| %>
@@ -10,7 +10,9 @@
     </div>
   <% end %>
   <div class="field">
+    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
     <%= form.text_field :content %>
     <%= form.submit %>
   </div>
