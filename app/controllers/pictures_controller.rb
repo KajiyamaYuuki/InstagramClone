@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
     @picture = Picture.all
   end
@@ -38,11 +38,11 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture.destroy
-    redirect_to user_path(user.id), notice:"投稿を削除しました"
+    redirect_to user_path(current_user.id), notice:"投稿を削除しました"
   end
 
   def confirm
-    @picture = Picture.new(picture_params)
+    @picture =current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
 
