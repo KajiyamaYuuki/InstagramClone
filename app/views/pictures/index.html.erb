@@ -1,0 +1,7 @@
+<h1>投稿一覧</h1>
+
+<% if logged_in? %>
+  <%= link_to "new Post", new_picture_path %>
+<% else %>
+  <%= link_to "Log in", new_session_path %>
+<% end %>
