@@ -1,7 +1,7 @@
 <h1>マイページ</h1>
 <p><%= notice %></p>
 <p>プロフィール画像:
-<% if @user.icon %>
+<% if @user.icon? %>
   <%= image_tag @user.icon.url %>
 <% end %>
 </p>
@@ -12,3 +12,5 @@
   <%= image_tag photo.image.url %>
   <%= link_to "show", picture_path(photo.id) %>
 <% end %>
+
+<p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
