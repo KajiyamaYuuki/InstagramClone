@@ -2,7 +2,9 @@
 
 <% if @pictures.present? %>
   <% @pictures.each do |picture| %>
-    <%= image_tag picture.image.url %>
-    <%= picture.content %>
+    <p><%= image_tag picture.image.url %></p>
+    <p><%= picture.content %></p>
   <% end %>
 <% end %>
+
+<%= link_to '戻る', user_path(@user.id) %>

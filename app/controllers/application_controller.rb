@@ -9,8 +9,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def login_required
-    unless current_user.id == @picture.user_id
+  def update_user
+    unless current_user.id == @user.id
+      flash[:notice] = "操作権限がありません"
+    redirect_to root_path
+    end
+  end
+
+  def update_picture
+    unless current_user.id == @picture.user.id
       flash[:notice] = "操作権限がありません"
     redirect_to root_path
     end

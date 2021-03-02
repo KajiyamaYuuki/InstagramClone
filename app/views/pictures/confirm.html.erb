@@ -1,9 +1,9 @@
 <h1>以下の内容で送信する</h1>
-<%= form_with(model: @picture, local: true) do |form| %>
-  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-  <%= form.hidden_field :image_cache %>
+<%= form_with(model: @picture, local: true, url: choose_new_or_edit) do |form| %>
   <%= form.hidden_field :content %>
   <p><%= @picture.content %></p>
+  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <%= form.hidden_field :image_cache %>
   <%= form.submit "送信する" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>

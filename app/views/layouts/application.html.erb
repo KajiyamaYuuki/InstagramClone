@@ -13,7 +13,9 @@
     <header class="navbar text-white bg-dark">
       <div class="container">
         <div class="nabar-header">
-          <h1>Kajistagram</h1>
+          <%= link_to root_path, class:"logo" do %>
+            <h1>Kajistagram</h1>
+          <% end %>
             <% flash.each do |key, value| %>
               <%= content_tag(:div, value, class: "#{key}") %>
             <% end %>
@@ -31,9 +33,9 @@
     <div class="container">
     <%= yield %>
     </div>
-    <footer class="text-center bg-dark text-white">
+    <footer class="footer">
       <div class="container">
-        <p>Copyright © 2021 WEF2101 Kajiyama Yuuki.</span>
+        <p class="text-muted">Copyright © 2021 WEF2101 Kajiyama Yuuki.</span>
       </div>
     </footer>
   </body>

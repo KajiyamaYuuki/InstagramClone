@@ -1,2 +1,11 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.logo {
+  color: white;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: gray;
+}

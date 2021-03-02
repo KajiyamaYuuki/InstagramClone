@@ -1,12 +1,12 @@
-<h1>マイページ</h1>
+<h1><%= @user.name %>のページ</h1>
 <p><%= notice %></p>
 <p>プロフィール画像:
 <% if @user.icon? %>
   <%= image_tag @user.icon.url %>
 <% end %>
 </p>
-<p><%= @user.name %></p>
-<p>メールアドレス: <%= @user.email %></p>
+<p>ユーザーネーム:<%= @user.name %></p>
+<p>メールアドレス:<%= @user.email %></p>
 <%= link_to "お気に入り一覧", user_favorites_path(@user) %>
 
 <% if logged_in? && @user.id == current_user.id %>
@@ -14,6 +14,6 @@
 <% end %>
 
 <% @user.pictures.each do |photo| %>
-  <%= image_tag photo.image.url %>
-  <%= link_to "show", picture_path(photo.id) %>
+  <p><%= image_tag photo.image.url %></p>
+  <p><%= link_to "show", picture_path(photo.id) %></p>
 <% end %>
