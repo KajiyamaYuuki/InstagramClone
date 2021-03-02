@@ -10,17 +10,31 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Log out", session_path(current_user.id), method: :delete %>
-      <%= link_to "New post", new_picture_path %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Log in", new_session_path %>
-    <% end %>
+    <header class="navbar text-white bg-dark">
+      <div class="container">
+        <div class="nabar-header">
+          <h1>Kajistagram</h1>
+            <% flash.each do |key, value| %>
+              <%= content_tag(:div, value, class: "#{key}") %>
+            <% end %>
+            <% if logged_in? %>
+              <%= link_to "Profile", user_path(current_user.id) %>
+              <%= link_to "Log out", session_path(current_user.id), method: :delete %>
+              <%= link_to "New post", new_picture_path %>
+            <% else %>
+              <%= link_to "Sign up", new_user_path %>
+              <%= link_to "Log in", new_session_path %>
+            <% end %>
+        </div>
+      </div>
+    </header>
+    <div class="container">
     <%= yield %>
+    </div>
+    <footer class="text-center bg-dark text-white">
+      <div class="container">
+        <p>Copyright © 2021 WEF2101 Kajiyama Yuuki.</span>
+      </div>
+    </footer>
   </body>
 </html>

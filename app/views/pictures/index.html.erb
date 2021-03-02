@@ -1,7 +1,6 @@
 <h1>投稿一覧</h1>
 
 <% @pictures.each do |picture| %>
-<p><%= image_tag picture.image.url %></p>
-<p><%= picture.content %></p>
 <%= link_to "詳細", picture_path(picture.id) %>
+<p><%= image_tag picture.image.url %></p>
 <% end %>

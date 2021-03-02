@@ -3,9 +3,16 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def authenticate_user
-    if @current_user == nil
-      flash[:notice] = t('notice.login_needed')
+    if current_user == nil
+      flash[:notice] = "ログインしてください"
       redirect_to new_session_path
     end
   end
-end
+
+  def login_required
+    unless current_user.id == @picture.user_id
+      flash[:notice] = "操作権限がありません"
+    redirect_to root_path
+    end
+  end
+  end

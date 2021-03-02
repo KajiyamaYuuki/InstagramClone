@@ -1,12 +1,14 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user, {only: [:create, :destroy]}
+
   def index
     favorites = Favorite.includes(:picture).where(user_id: params[:user_id])
     @user = User.find(params[:user_id])
     @pictures = favorites.map(&:picture)
 
     # # GOAL
-    # [<favorite picutre=<picture>>, <favorite picutre=<picture>>, <favorite picutre=<picture>>]
-    # [<picutre>, <picutre>, <picutre>]
+    # [<favorite picture=<picture>>, <favorite picture=<picture>>, <favorite picture=<picture>>]
+    # [<picture>, <picture>, <picture>]
 
     # # 1
     # @pictures = []
