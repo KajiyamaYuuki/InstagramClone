@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    resource :favorites, only: [:create, :destroy]
   end
 end
