@@ -7,10 +7,13 @@
 </p>
 <p><%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
+<%= link_to "お気に入り一覧", user_favorites_path(@user) %>
+
+<% if logged_in? && @user.id == current_user.id %>
+<p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+<% end %>
 
 <% @user.pictures.each do |photo| %>
   <%= image_tag photo.image.url %>
   <%= link_to "show", picture_path(photo.id) %>
 <% end %>
-
-<p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>

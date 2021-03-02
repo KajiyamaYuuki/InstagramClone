@@ -8,15 +8,16 @@
 
 <p><%= @picture.content %></p>
 
-<% unless @picture.user_id == current_user.id %>
+<% if @picture.user_id == current_user.id %>
+  <p><span>お気に入り数：</span><%= @picture.favorites.count %></p>
+  <%= link_to "編集", edit_picture_path(@picture.id), data: { confirm: '本当に編集してよろしいですか？' } %>
+  <%= link_to "削除", picture_path(@picture.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか？' } %>
+<% else %>
   <% if @picture.favorited_by?(current_user) %>
     <p><span>お気に入り解除：</span><%= link_to @picture.favorites.count, picture_favorites_path(@picture.id), method: :delete %></p>
   <% else %>
     <p><span>お気に入り登録：</span><%= link_to @picture.favorites.count, picture_favorites_path(@picture.id), method: :post %></p>
   <% end %>
-<% else %>
-  <p><span>お気に入り数：</span><%= @picture.favorites.count %></p>
 <% end %>
 
-<%= link_to "編集", edit_picture_path(@picture.id), data: { confirm: '本当に編集してよろしいですか？' } %>
-<%= link_to "削除", picture_path(@picture.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to '戻る', pictures_path %>
