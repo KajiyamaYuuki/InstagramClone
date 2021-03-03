@@ -16,7 +16,7 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
-        # PictureMailer.picture_mail(@picture).deliver
+        PictureMailer.picture_mail(@picture).deliver
         redirect_to user_path(current_user.id), notice: "投稿が完了しました！"
       else
         render :new
